@@ -6,12 +6,12 @@ class TweetsController < ApplicationController
   
   def create
     tweet = Tweet.new
-    tweet.attributes = input_message_param
+    tweet.attributes = input_content_param
     tweet.user_id = current_user.id
     if tweet.valid? # バリデーションチェック
       tweet.save!
     else
-      flash[:alert] = tweet.errors.full_messages
+      flash[:alert] = tweet.errors.full_content
     end
     redirect_to action: :index
   end

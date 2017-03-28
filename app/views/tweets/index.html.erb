@@ -10,14 +10,14 @@
           
         <div class="alert">
           <% if flash[:alert] %>
-            <% flash[:alert].each do |message| %>
-              <p class="alert"><%= message %></p>
+            <% flash[:alert].each do |content| %>
+              <p class="alert"><%= content %></p>
             <% end %>
           <% end %>
         </div>
           
         <div class="post">
-          <%= f.submit 'Post', class: 'btn btn-primary' %>
+          <%= f.submit '投稿', class: 'btn btn-primary' %>
         </div>
       </div>
     <% end %>
@@ -25,7 +25,7 @@
   
   <div class="tweet">
     <% @tweet.each do |t| %>
-      <div class="per">
+      <div class="mine <%= 'mine' if t.user.id == current_user.id %>">
         <p class="icon">
           <% if t.user.thumbnail? %>
               <%= image_tag t.user.thumbnail.url %>
@@ -33,9 +33,7 @@
               NO IMAGE
           <% end %>
         </p>
-        <p class="message">
-          <%= t.message %>
-        </p>
+        <%= simple_format t.content, class: 'content' %>
       </div>
     <% end %>
   </div>
