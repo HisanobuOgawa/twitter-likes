@@ -1,3 +1,21 @@
 .logout_wrapper {
   text-align: right;
 }
+
+.tweet_wrapper {
+  &.wrapper {
+    width: 700px;
+  }
+  .actions {
+    div {
+        
+      &.alert {
+        float: left;
+      }
+      
+      &.post {
+        float: right;
+      }
+    }
+  }
+}
